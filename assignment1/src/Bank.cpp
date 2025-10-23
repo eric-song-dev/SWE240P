@@ -120,7 +120,7 @@ bool Bank::payUserToUser(int payerID, int payeeID, double amount) {
 double Bank::getMedianID() const {
     if (dummyHead->next == nullptr) {
         // bank is empty
-        throw std::runtime_error("Bank is empty, cannot calculate median.");
+        throw std::runtime_error("bank is empty, cannot calculate median");
     }
 
     Account *prevSlow = dummyHead;

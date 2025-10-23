@@ -153,8 +153,8 @@ TEST_F(BankTest, Task7_MergeBanks) {
     bankOfOrangeCounty.addUser("Bob", "456 Pine St", "222-22-222", 200.0);   // ID 2
     
     Bank bankOfLosAngeles;
-    bankOfLosAngeles.addUser("Charlie", "321 Oak St", "333-33-333", 300.0); // ID 1 (Conflict)
-    bankOfLosAngeles.addUser("David", "789 Elm St", "444-44-444", 400.0);   // ID 2 (Conflict)
+    bankOfLosAngeles.addUser("Charlie", "321 Oak St", "333-33-333", 300.0); // ID 1 (Conflict -> 4)
+    bankOfLosAngeles.addUser("David", "789 Elm St", "444-44-444", 400.0);   // ID 2 (Conflict -> 5)
     bankOfLosAngeles.addUser("Eve", "101 Maple St", "555-55-555", 500.0);   // ID 3
     
     std::cout << "Bank of Orange County:" << std::endl;
