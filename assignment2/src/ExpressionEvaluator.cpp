@@ -79,11 +79,10 @@ double ExpressionEvaluator::evaluate(const std::string& expression) {
                     num = (num * 10) + (expression[i] - '0');
                     i++;
                 }
-                i--; // Adjust loop counter
+                i--; // Since i++ one more time, so need i-- here
 
                 operandStack.push(negative ? -num : num);
-                expectOperand = false; // We just found an operand
-
+                expectOperand = false; // Just found an operand
             } else if (c == '+' || c == '-' || c == '*' || c == '/') {
                 // 3. Parse an operator
                 while (!operatorStack.empty()
@@ -91,8 +90,7 @@ double ExpressionEvaluator::evaluate(const std::string& expression) {
                     applyOperation();
                 }
                 operatorStack.push(c);
-                expectOperand = true; // Next, we expect an operand
-
+                expectOperand = true; // Expect an operand next
             } else {
                 // 4. Invalid character
                 throw std::runtime_error("invalid character in expression");
@@ -110,9 +108,8 @@ double ExpressionEvaluator::evaluate(const std::string& expression) {
         }
 
         return static_cast<double>(operandStack.pop());
-
     } catch (const std::exception& e) {
-        std::cerr << "error: " << e.what() << std::endl;
+        std::cerr << "[error] " << e.what() << std::endl;
         return NAN;
     }
 }
