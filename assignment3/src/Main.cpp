@@ -11,7 +11,8 @@
 #include <fstream>
 #include <string>
 
-static const std::string DEFAULT_FILENAME = "/Users/ericsong/Courses/SWE240P/assignment3/pride-and-prejudice.txt";
+static const std::string DEFAULT_PATH = "/Users/ericsong/Courses/SWE240P/assignment3/";
+static const std::string DEFAULT_FILENAME = DEFAULT_PATH + "pride-and-prejudice.txt";
 
 int main(int argc, char* argv[]) {
     std::cout << "usage: " << argv[0] << " <filename>" << std::endl;
