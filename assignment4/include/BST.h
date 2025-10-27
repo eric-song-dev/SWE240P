@@ -23,9 +23,15 @@ public:
     // Task 1: Insertion and Deletion
     void insert(Student data);
     void remove(const std::string& lastName);
+    
+    // Task 2: Pre-order Traversal (Depth-First)
+    void preOrderTraversal(std::ofstream& outFile) const;
 
     // Task 2: In-order Traversal (Depth-First)
     void inOrderTraversal(std::ofstream& outFile) const;
+    
+    // Task 2: Post-order Traversal (Depth-First)
+    void postOrderTraversal(std::ofstream& outFile) const;
 
     // Task 3: Level-order Traversal (Breadth-First)
     void levelOrderTraversal(std::ofstream& outFile) const;
@@ -44,6 +50,8 @@ private:
     Node* removeRecursive(Node* node, const std::string& lastName);
     Node* findMinNode(Node* node);
     void destroyRecursive(Node* node);
+    void preOrderRecursive(Node* node, std::ofstream& outFile) const;
     void inOrderRecursive(Node* node, std::ofstream& outFile) const;
+    void postOrderRecursive(Node* node, std::ofstream& outFile) const;
     Node* searchRecursive(Node* node, const std::string& lastName) const;
 };

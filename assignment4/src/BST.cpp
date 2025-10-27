@@ -138,6 +138,21 @@ Node* BST::searchRecursive(Node* node, const std::string& lastName) const {
     }
 }
 
+// Time: O(N)
+// Space: O(H) for recursion stack depth (H = height of tree)
+void BST::preOrderTraversal(std::ofstream& outFile) const {
+    preOrderRecursive(root, outFile);
+}
+
+// Time: O(N)
+// Space: O(H) for recursion stack depth (H = height of tree)
+void BST::preOrderRecursive(Node* node, std::ofstream& outFile) const {
+    if (node != nullptr) {
+        outFile << node->data << std::endl;
+        preOrderRecursive(node->left, outFile);
+        preOrderRecursive(node->right, outFile);
+    }
+}
 
 // Time: O(N)
 // Space: O(H) for recursion stack depth (H = height of tree)
@@ -152,6 +167,22 @@ void BST::inOrderRecursive(Node* node, std::ofstream& outFile) const {
         inOrderRecursive(node->left, outFile);
         outFile << node->data << std::endl;
         inOrderRecursive(node->right, outFile);
+    }
+}
+
+// Time: O(N)
+// Space: O(H) for recursion stack depth (H = height of tree)
+void BST::postOrderTraversal(std::ofstream& outFile) const {
+    postOrderRecursive(root, outFile);
+}
+
+// Time: O(N)
+// Space: O(H) for recursion stack depth (H = height of tree)
+void BST::postOrderRecursive(Node* node, std::ofstream& outFile) const {
+    if (node != nullptr) {
+        postOrderRecursive(node->left, outFile);
+        postOrderRecursive(node->right, outFile);
+        outFile << node->data << std::endl;
     }
 }
 
