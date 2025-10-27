@@ -26,14 +26,18 @@ HashTable::~HashTable() {}
 // Time: O(K), where K is the length of the key string
 // Space: O(1)
 size_t HashTable::hash(const std::string& key) const {
+    // it's an odd prime that minimizes collisions when hashing short strings
+    // provides a good distribution of hash values for a wide range of inputs
     unsigned long long hashValue = 5381; // magic number
     for (char c : key) {
+        // produce fewer collisions and better distribution than nearby constants
+        // bit shifting is faster than direct multiplication
         // hash = hash * 33 + c
         hashValue = ((hashValue << 5) + hashValue) + static_cast<unsigned long long>(c);
     }
+    // ensures that the hash value maps into the range [0, tableSize - 1], which fits the size of the hash table
     return hashValue % tableSize;
 }
-
 
 // Time: Average O(K + N/M), Worst O(K + N) where N is number of elements, M is table size, K is key length.
 // Space: O(1) average (if key doesn't exist, O(K) to store the key)
