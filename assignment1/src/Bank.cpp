@@ -28,7 +28,7 @@ Bank::~Bank() {
 // Space: O(1)
 int Bank::generateID() {
     if (!freeIDs.empty()) {
-        int id = freeIDs.top();
+        int id = freeIDs.front();
         freeIDs.pop();
         return id;
     } else {

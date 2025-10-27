@@ -33,17 +33,17 @@ TEST_F(BankTest, Task3_DeleteAndRecycleID) {
     std::cout << "Before deletion:" << std::endl;
     bank.printList();
     
-    bool deleted = bank.deleteUser(1); // Delete Alice (ID 1)
-    ASSERT_TRUE(deleted);
+    ASSERT_TRUE(bank.deleteUser(2)); // Delete Bob (ID 2)
+    ASSERT_TRUE(bank.deleteUser(1)); // Delete Alice (ID 1)
     EXPECT_EQ(bank.findUser(1), nullptr);
     
-    std::cout << "After deleting ID 1:" << std::endl;
+    std::cout << "After deleting ID 2 and 1:" << std::endl;
     bank.printList();
     
-    // Add new user, should get recycled ID 1
+    // Add new user, should get recycled ID 2
     auto david = bank.addUser("David", "789 Elm St", "444-44-444", 400.0);
     ASSERT_NE(david, nullptr);
-    EXPECT_EQ(david->id, 1);
+    EXPECT_EQ(david->id, 2);
     
     std::cout << "After adding David (should get ID 1):" << std::endl;
     bank.printList();
@@ -103,8 +103,10 @@ TEST_F(BankTest, Task5_GetMedianID) {
     // Test 3: With recycled IDs
     bank.deleteUser(2);
     bank.deleteUser(3);
-    bank.addUser("User5", "...", "...", 10); // Gets ID 3
-    bank.addUser("User6", "...", "...", 10); // Gets ID 2
+    auto user5 = bank.addUser("User5", "...", "...", 10); // Gets ID 2
+    auto user6 = bank.addUser("User6", "...", "...", 10); // Gets ID 3
+    EXPECT_EQ(user5->id, 2);
+    EXPECT_EQ(user6->id, 3);
     std::cout << "Scrambled list (IDs 1, 2, 3, 4):" << std::endl;
     bank.printList();
     // List is sorted: 1, 2, 3, 4. Median is still avg of 2 and 3.

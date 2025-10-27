@@ -54,7 +54,8 @@ public:
 
 private:
     Account* dummyHead;
-    std::stack<int> freeIDs;
+    // FIFO (First In, First Out)
+    std::queue<int> freeIDs;
     int nextAvailableID;
 
     int generateID();
