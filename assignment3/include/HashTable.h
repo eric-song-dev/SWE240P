@@ -37,6 +37,9 @@ public:
     void clear();
 
 private:
+    // Separate Chaining
+    // Each slot in the hash table stores a linked list (or another structure) of all elements that hash to the same index
+    // When a collision occurs, the new element is simply appended to the list at that position
     std::vector<std::list<std::string>> table;
     size_t tableSize;
     size_t currentSize;
